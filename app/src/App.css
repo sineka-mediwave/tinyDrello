@@ -1,0 +1,12 @@
+body {
+  background-color: #2970a2;
+  color: #fff;
+}
+
+.taskDiv {
+  margin: 8px;
+  padding: 10px 15px;
+  background-color: #e4e3e4;
+  color: #000;
+  border-radius: 8px;
+}
