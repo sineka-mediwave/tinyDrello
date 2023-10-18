@@ -5,6 +5,15 @@ const TodoCard = (props) => {
   const [content, setContent] = useState("");
   const [isEdit, setIsedit] = useState(true);
 
+  const convertTime24_12 = (t) => {
+    let [h, ...rest] = t.split(":");
+    return (
+      (h == "12" ? "12" : h % 12) +
+      ":" +
+      rest.join(":") +
+      (h < 12 ? " AM" : " PM")
+    );
+  };
   function handleDeleteClick(taskId) {
     console.log(taskId);
     handleDelete(taskId);
@@ -34,7 +43,10 @@ const TodoCard = (props) => {
           />
         </div>
         <div className="list-item time">
-          last updated <time>{new Date().getDate()}</time>
+          last updated
+          <time className="px-2">
+            {convertTime24_12(new Date().toLocaleTimeString())}
+          </time>
         </div>
       </form>
     </>
