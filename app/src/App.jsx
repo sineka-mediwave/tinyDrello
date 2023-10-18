@@ -31,16 +31,28 @@ function App() {
   // }
 
   return (
-    <div className="container">
-      <h1>Drello</h1>
-      <div className="row ">
+    <div>
+      <header class="main-header">
+        <h1>Drello</h1>
+      </header>
+      <div className="container ">
         <Todo />
-        <div className="col-sm taskDiv">
-          <h2>In Progress</h2>
+        <div class="list-wrapper">
+          <div class="taskDiv">
+            <div class="task-header">
+              <h2>In Progress</h2>
+            </div>
+          </div>
         </div>
-        <div className="col-sm taskDiv">
-          <h2>Completed</h2>
+        {/* <div className="col-sm"> */}
+        <div class="list-wrapper">
+          <div class="taskDiv">
+            <div class="task-header">
+              <h2>Completed</h2>
+            </div>
+          </div>
         </div>
+        {/* </div> */}
       </div>
     </div>
   );

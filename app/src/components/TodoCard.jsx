@@ -1,12 +1,15 @@
 const TodoCard = () => {
   return (
     <>
-      <blockquote contenteditable="true" className="rounded p-2">
-        <p>Edit this content to add your own quote</p>
-        <cite contenteditable="true" className="">
-          last updated
-        </cite>
-      </blockquote>
+      <div class="list-group">
+        <span class="list-item-message" contenteditable="true">
+          adding more lines to the content Edit this content to add your own
+          quote
+        </span>
+        <div class="list-item-time">
+          last updated <time>5.36 a.m</time>
+        </div>
+      </div>
     </>
   );
 };

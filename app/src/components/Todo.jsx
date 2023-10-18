@@ -4,23 +4,23 @@ const Todo = () => {
   const [card, setCard] = useState([]);
 
   const addCard = () => {
-    const newBlockquotes = [...card, <TodoCard />];
-    setCard(newBlockquotes);
+    const newCard = [...card, <TodoCard />];
+    setCard(newCard);
   };
   return (
-    <div className="col-sm taskDiv">
-      <div className="d-flex justify-content-between mb-3">
-        <h2>Todo</h2>
-        <button className="btn btn-light" onClick={addCard}>
-          +
-        </button>
+    <div className="list-wrapper">
+      <div className="taskDiv">
+        <div className="task-header">
+          <h2>Todo</h2>
+          <button onClick={addCard}>+</button>
+        </div>
+        <div className="task-card">
+          {card.map((card, index) => (
+            <div key={index}>{card}</div>
+          ))}
+        </div>
+        <TodoCard />
       </div>
-      <div className="mb-3">
-        {card.map((card, index) => (
-          <div key={index}>{card}</div>
-        ))}
-      </div>
-      <TodoCard />
     </div>
   );
 };
