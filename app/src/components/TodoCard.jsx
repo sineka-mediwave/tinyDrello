@@ -1,15 +1,33 @@
-const TodoCard = () => {
+import { useState } from "react";
+
+const TodoCard = ({ handleAdd }) => {
+  const [content, setContent] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleAdd(content);
+    setContent("");
+  }
   return (
     <>
-      <div class="list-group">
-        <span class="list-item-message" contenteditable="true">
-          adding more lines to the content Edit this content to add your own
-          quote
-        </span>
-        <div class="list-item-time">
-          last updated <time>5.36 a.m</time>
+      <form className="list-group" onSubmit={(e) => handleSubmit(e)}>
+        <div className="list-item title">
+          <button>X</button>
         </div>
-      </div>
+        <div className="list-item-message">
+          <input
+            // contentEditable="true"
+            className="textarea"
+            placeholder="Enter text..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+          ></input>
+        </div>
+        <div className="list-item time">
+          last updated <time></time>
+        </div>
+      </form>
     </>
   );
 };
