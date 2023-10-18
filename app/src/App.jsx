@@ -1,9 +1,18 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import Todo from "./components/Todo";
+
+function getFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("My-Drello")) || [];
+}
+
 function App() {
-  const [todos, dispatch] = useReducer(todoReducer, []);
+  const [todos, dispatch] = useReducer(todoReducer, getFromLocalStorage());
+
+  useEffect(() => {
+    localStorage.setItem("My-Drello", JSON.stringify(todos));
+  }, [todos]);
 
   function todoReducer(todos, action) {
     switch (action.type) {

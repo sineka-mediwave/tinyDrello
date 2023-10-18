@@ -4,3 +4,17 @@
 - adding plus button on the top of the todo Section an example todo card.
 - while click the add button, new component have to display in the todo section.
 - This card input data, adds the data to the state reducer.
+- Added Local Storage, while save enable and disable text editing
+
+```
+const [isEdit, setIsedit] = useState(true);
+function handleEditContent(id) {
+    editContent(content, id);
+    setIsedit(false);
+  }
+
+  function enableEdit() {
+    setIsedit(false);
+  }
+  <textarea value={isEdit ? task.text : content}/>
+```
