@@ -1,12 +1,13 @@
 import TodoCard from "./TodoCard";
-import { useState } from "react";
-const Todo = ({ handleAdd }) => {
-  const [card, setCard] = useState([]);
+const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
+  const updateAdd = (value, id) => {
+    handleAdd(value, id);
+  };
 
   const addCard = () => {
-    const newCard = [...card, <TodoCard />];
-    setCard(newCard);
+    handleAdd("");
   };
+
   return (
     <div className="taskDiv">
       <div className="task-header">
@@ -14,11 +15,20 @@ const Todo = ({ handleAdd }) => {
         <button onClick={addCard}>+</button>
       </div>
       <div>
-        {card.map((card, index) => (
+        {/* {card.map((card, index) update
           <div key={index}>{card}</div>
+        ))} */}
+        {todos.map((t) => (
+          <div key={t.id}>
+            <TodoCard
+              sendAdd={updateAdd}
+              handleDelete={handleDelete}
+              editContent={handleEdit}
+              task={t}
+            />
+          </div>
         ))}
       </div>
-      <TodoCard handleAdd={handleAdd} />
     </div>
   );
 };

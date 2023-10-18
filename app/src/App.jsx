@@ -17,6 +17,20 @@ function App() {
           },
         ];
       }
+      case "TODO_DELETE": {
+        const filtered = todos.filter((t) => t.id != action.value);
+        return [...filtered];
+      }
+
+      case "TODO_EDIT": {
+        const newTodos = [...todos];
+        const idx = newTodos.findIndex((nt) => nt.id === action.value.id);
+        if (idx !== -1) {
+          newTodos[idx]["text"] = action.value.text;
+        }
+        return newTodos;
+      }
+
       default:
         throw Error("Unknown action: " + action.type);
     }
@@ -28,6 +42,20 @@ function App() {
       value: text,
     });
   }
+  function handleEdit(text, id) {
+    dispatch({
+      type: "TODO_EDIT",
+      value: { text, id },
+    });
+  }
+
+  function handleDelete(id) {
+    dispatch({
+      type: "TODO_DELETE",
+      value: id,
+    });
+  }
+
   return (
     <div>
       <header className="main-header">
@@ -35,7 +63,12 @@ function App() {
       </header>
       <div className="container ">
         <div className="list-wrapper">
-          <Todo handleAdd={handleAdd} />
+          <Todo
+            todos={todos}
+            handleAdd={handleAdd}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
         </div>
 
         <div className="list-wrapper">
