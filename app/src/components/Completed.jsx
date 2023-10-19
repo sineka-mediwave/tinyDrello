@@ -16,7 +16,7 @@ const Completed = ({ handleAdd, handleDelete, handleEdit, todos }) => {
   return (
     <div>
       {todos
-        .filter((t) => t.inState === "completed")
+        .filter((t) => t.inState === "Completed")
         .map((t) => (
           <div key={t.id}>
             <TodoCard

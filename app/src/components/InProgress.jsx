@@ -16,7 +16,7 @@ const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
   return (
     <div>
       {todos
-        .filter((t) => t.inState === "inProgress")
+        .filter((t) => t.inState === "In Progress")
         .map((t) => (
           <div key={t.id}>
             <TodoCard

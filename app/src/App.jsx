@@ -30,7 +30,7 @@ function App() {
             id: new Date().getTime(),
             text: action.value,
             time: new Date().toLocaleTimeString(),
-            inState: "todo",
+            inState: "Todo",
           },
         ];
       }
@@ -108,20 +108,13 @@ function App() {
                 onDragOver={(e) => onDragOver(e)}
                 onDrop={(e) => onDrop(e, "todo")}
               />
-              <Todo
-                todos={todos}
-                handleAdd={handleAdd}
-                handleDelete={handleDelete}
-                handleEdit={handleEdit}
-                handleDrag={handleDrag}
-              />
             </div>
           </div>
         ))} */}
         <div
           className="list-wrapper"
           onDragOver={(e) => onDragOver(e)}
-          onDrop={(e) => onDrop(e, "todo")}
+          onDrop={(e) => onDrop(e, "Todo")}
         >
           <div className="taskDiv">
             <div className="task-header">
@@ -139,7 +132,7 @@ function App() {
         <div
           className="list-wrapper"
           onDragOver={(e) => onDragOver(e)}
-          onDrop={(e) => onDrop(e, "inProgress")}
+          onDrop={(e) => onDrop(e, "In Progress")}
         >
           <div className="taskDiv">
             <div className="task-header">
@@ -156,7 +149,7 @@ function App() {
         <div
           className="list-wrapper"
           onDragOver={(e) => onDragOver(e)}
-          onDrop={(e) => onDrop(e, "completed")}
+          onDrop={(e) => onDrop(e, "Completed")}
         >
           <div className="taskDiv">
             <div className="task-header">

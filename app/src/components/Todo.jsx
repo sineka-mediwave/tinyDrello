@@ -21,7 +21,7 @@ const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
   return (
     <div>
       {todos
-        .filter((t) => t.inState === "todo")
+        .filter((t) => t.inState === "Todo")
         .map((t) => (
           <div key={t.id}>
             <TodoCard
