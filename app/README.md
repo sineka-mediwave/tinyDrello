@@ -20,6 +20,7 @@ function handleEditContent(id) {
 ```
 
 - save the last updated time in local storage
+- Dragging the components using dragOver and dragDrop uisng in the end component
 
 ## Reference
 

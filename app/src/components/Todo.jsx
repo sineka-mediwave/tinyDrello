@@ -1,6 +1,5 @@
 import TodoCard from "./TodoCard";
 const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
-  // const [todoCard, setTodoCard] = useState(todos);
   const updateAdd = (value, id) => {
     handleAdd(value, id);
   };
@@ -21,10 +20,6 @@ const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
 
   return (
     <div>
-      {/* {card.map((card, index) update
-          <div key={index}>{card}</div>
-        ))} */}
-
       {todos
         .filter((t) => t.inState === "todo")
         .map((t) => (

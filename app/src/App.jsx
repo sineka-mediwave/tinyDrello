@@ -49,15 +49,7 @@ function App() {
         return newTodos;
       }
 
-      case "TODO_DRAG": {
-        const newTodos = [...todos];
-        const idx = newTodos.findIndex((nt) => nt.id === action.value.id);
-        if (idx !== -1) {
-          newTodos[idx]["state"] = "progress";
-        }
-        return newTodos;
-      }
-      case "TASK_DROP": {
+      case "TODO_DROP": {
         let newTasks = todos.filter((t) => {
           if (t.id == action.value.id) {
             t.inState = action.value.state;
@@ -91,17 +83,10 @@ function App() {
     });
   }
 
-  function handleDrag(id) {
-    dispatch({
-      type: "TODO_DRAG",
-      value: id,
-    });
-  }
-
   function onDrop(ev, state) {
     let id = ev.dataTransfer.getData("id");
     dispatch({
-      type: "TASK_DROP",
+      type: "TODO_DROP",
       value: { id, state },
     });
   }
@@ -133,13 +118,13 @@ function App() {
             </div>
           </div>
         ))} */}
-        <div className="list-wrapper">
+        <div
+          className="list-wrapper"
+          onDragOver={(e) => onDragOver(e)}
+          onDrop={(e) => onDrop(e, "todo")}
+        >
           <div className="taskDiv">
-            <div
-              className="task-header"
-              onDragOver={(e) => onDragOver(e)}
-              onDrop={(e) => onDrop(e, "todo")}
-            >
+            <div className="task-header">
               <h2>Todo</h2>
               <button onClick={() => handleAdd("")}>+</button>
             </div>
@@ -148,16 +133,15 @@ function App() {
               handleAdd={handleAdd}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
-              handleDrag={handleDrag}
             />
           </div>
         </div>
-        <div className="list-wrapper">
-          <div
-            className="taskDiv"
-            onDragOver={(e) => onDragOver(e)}
-            onDrop={(e) => onDrop(e, "inProgress")}
-          >
+        <div
+          className="list-wrapper"
+          onDragOver={(e) => onDragOver(e)}
+          onDrop={(e) => onDrop(e, "inProgress")}
+        >
+          <div className="taskDiv">
             <div className="task-header">
               <h2>In Progress</h2>
             </div>
@@ -165,17 +149,16 @@ function App() {
               todos={todos}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
-              handleDrag={handleDrag}
             />
           </div>
         </div>
 
-        <div className="list-wrapper">
-          <div
-            className="taskDiv"
-            onDragOver={(e) => onDragOver(e)}
-            onDrop={(e) => onDrop(e, "completed")}
-          >
+        <div
+          className="list-wrapper"
+          onDragOver={(e) => onDragOver(e)}
+          onDrop={(e) => onDrop(e, "completed")}
+        >
+          <div className="taskDiv">
             <div className="task-header">
               <h2>Completed</h2>
             </div>
@@ -183,7 +166,6 @@ function App() {
               todos={todos}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
-              handleDrag={handleDrag}
             />
           </div>
         </div>

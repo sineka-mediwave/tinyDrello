@@ -1,6 +1,5 @@
 import TodoCard from "./TodoCard";
-const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
-  // const [todoCard, setTodoCard] = useState(todos);
+const Completed = ({ handleAdd, handleDelete, handleEdit, todos }) => {
   const updateAdd = (value, id) => {
     handleAdd(value, id);
   };
@@ -14,17 +13,8 @@ const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
     console.log("moving");
   };
 
-  // useEffect(() => {
-  //   const filtered = todos.filter((t) => t.inState === "todo");
-  //   setTodoCard(filtered);
-  // }, [todos]);
-
   return (
     <div>
-      {/* {card.map((card, index) update
-          <div key={index}>{card}</div>
-        ))} */}
-
       {todos
         .filter((t) => t.inState === "completed")
         .map((t) => (
@@ -43,4 +33,4 @@ const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
   );
 };
 
-export default Todo;
+export default Completed;
