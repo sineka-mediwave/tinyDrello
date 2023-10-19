@@ -2,6 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { useReducer, useEffect } from "react";
 import Todo from "./components/Todo";
+import InProgress from "./components/InProgress";
+import Completed from "./components/Completed";
 // import TitleCard from "./components/TitleCard";
 function getFromLocalStorage() {
   return JSON.parse(localStorage.getItem("My-Drello")) || [];
@@ -133,7 +135,11 @@ function App() {
         ))} */}
         <div className="list-wrapper">
           <div className="taskDiv">
-            <div className="task-header">
+            <div
+              className="task-header"
+              onDragOver={(e) => onDragOver(e)}
+              onDrop={(e) => onDrop(e, "todo")}
+            >
               <h2>Todo</h2>
               <button onClick={() => handleAdd("")}>+</button>
             </div>
@@ -155,6 +161,12 @@ function App() {
             <div className="task-header">
               <h2>In Progress</h2>
             </div>
+            <InProgress
+              todos={todos}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+              handleDrag={handleDrag}
+            />
           </div>
         </div>
 
@@ -167,6 +179,12 @@ function App() {
             <div className="task-header">
               <h2>Completed</h2>
             </div>
+            <Completed
+              todos={todos}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+              handleDrag={handleDrag}
+            />
           </div>
         </div>
       </div>

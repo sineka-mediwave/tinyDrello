@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 import TodoCard from "./TodoCard";
 const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
-  const [todoCard, setTodoCard] = useState(todos);
+  // const [todoCard, setTodoCard] = useState(todos);
   const updateAdd = (value, id) => {
     handleAdd(value, id);
   };
@@ -15,10 +14,10 @@ const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
     console.log("moving");
   };
 
-  useEffect(() => {
-    const filtered = todos.filter((t) => t.inState === "todo");
-    setTodoCard(filtered);
-  }, [todos]);
+  // useEffect(() => {
+  //   const filtered = todos.filter((t) => t.inState === "todo");
+  //   setTodoCard(filtered);
+  // }, [todos]);
 
   return (
     <div>
@@ -26,18 +25,20 @@ const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
           <div key={index}>{card}</div>
         ))} */}
 
-      {todoCard.map((t) => (
-        <div key={t.id}>
-          <TodoCard
-            sendAdd={updateAdd}
-            handleDelete={handleDelete}
-            editContent={handleEdit}
-            task={t}
-            onDragStart={handleDragStart}
-            onDragOver={handleDragOver}
-          />
-        </div>
-      ))}
+      {todos
+        .filter((t) => t.inState === "todo")
+        .map((t) => (
+          <div key={t.id}>
+            <TodoCard
+              sendAdd={updateAdd}
+              handleDelete={handleDelete}
+              editContent={handleEdit}
+              task={t}
+              onDragStart={handleDragStart}
+              onDragOver={handleDragOver}
+            />
+          </div>
+        ))}
     </div>
   );
 };
