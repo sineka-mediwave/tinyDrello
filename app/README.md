@@ -19,6 +19,8 @@ function handleEditContent(id) {
   <textarea value={isEdit ? task.text : content}/>
 ```
 
+- save the last updated time in local storage
+
 ## Reference
 
 - [Change 24-hours to 12-hours](https://stackoverflow.com/questions/13898423/javascript-convert-24-hour-time-of-day-string-to-12-hour-time-with-am-pm-and-no)
